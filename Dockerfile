@@ -5,6 +5,7 @@ COPY package*.json ./
 RUN yarn install
 COPY . .
 RUN yarn build
+RUN npm prune --production
 
 FROM mhart/alpine-node:12
 
