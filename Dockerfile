@@ -1,17 +1,15 @@
-FROM node:12
+FROM node:12 AS builder
 
-# Setting working directory. All the path will be relative to WORKDIR
-WORKDIR /usr/src/app
-
-# Installing dependencies
+WORKDIR /app
 COPY package*.json ./
-RUN yarn
-
-# Copying source files
+RUN yarn install
 COPY . .
-
-# Building app
 RUN yarn build
 
+FROM node:12
+
+WORKDIR /app
+COPY --from=builder /app .
+EXPOSE 3000
 # Running the app
 CMD [ "yarn", "start" ]
