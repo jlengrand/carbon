@@ -1,4 +1,4 @@
-FROM node:12 AS builder
+FROM mhart/alpine-node:12 AS builder
 
 WORKDIR /app
 COPY package*.json ./
@@ -6,7 +6,7 @@ RUN yarn install
 COPY . .
 RUN yarn build
 
-FROM node:12
+FROM mhart/alpine-node:12
 
 WORKDIR /app
 COPY --from=builder /app .
