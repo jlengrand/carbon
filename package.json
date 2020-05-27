@@ -76,6 +76,7 @@
     "lint-staged": "^10.2.0",
     "now": "^18.0.0",
     "now-release": "^0.0.2",
+    "pkg": "^4.4.8",
     "wait-on": "^4.0.2"
   },
   "engines": {
